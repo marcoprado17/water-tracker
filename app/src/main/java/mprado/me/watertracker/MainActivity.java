@@ -23,18 +23,21 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragment_holder, homeFragment)
+                            .addToBackStack(null)
                             .commit();
                     return true;
                 case R.id.navigation_dashboards:
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragment_holder, dashboardsFragment)
+                            .addToBackStack(null)
                             .commit();
                     return true;
                 case R.id.navigation_notifications:
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.fragment_holder, notificationsFragment)
+                            .addToBackStack(null)
                             .commit();
                     return true;
             }
