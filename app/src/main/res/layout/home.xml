@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/main_layout_padding">
 
-    <TextView
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/content_loading_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/home"/>
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_gravity="center_horizontal"
+    />
+
+    <LinearLayout
+        android:id="@+id/content_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:contentPadding="@dimen/card_padding"
+            android:layout_marginBottom="@dimen/card_margin"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/n_of_sensors_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/n_of_sensors"/>
+                <TextView
+                    android:id="@+id/last_sensors_sync_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_sensors_sync"/>
+                <TextView
+                    android:id="@+id/last_sensors_data_sync_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_sensors_data_sync"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/sync_sensors_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/sync_sensors"
+            />
+
+        <Button
+            android:id="@+id/sync_sensors_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/sync_sensors_data"
+            />
+
+        <Button
+            android:id="@+id/clean_all_data_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/clean_all_data"
+            />
+    </LinearLayout>
 </LinearLayout>

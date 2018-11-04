@@ -3,4 +3,13 @@
     <string name="home">Home</string>
     <string name="dashboards">Dashboards</string>
     <string name="notifications">Notificações</string>
+    <string name="sync_sensors">Sincronizar Sensores</string>
+    <string name="sync_sensors_data">"Sincronizar Dados dos Sensores"</string>
+    <string name="clean_all_data">"Limpar todos os dados"</string>
+    <string name="n_of_sensors">Número de sensores: %1$d</string>
+    <string name="last_sensors_sync">Ultima sincronização de sensores: %1$s</string>
+    <string name="last_sensors_data_sync">Ultima sincronização dos dados dos sensores: %1$s</string>
+    <string name="loading">Carregando…</string>
+    <string name="syncronizing">Sincronizando…</string>
+    <string name="cleaning">Limpando…</string>
 </resources>
