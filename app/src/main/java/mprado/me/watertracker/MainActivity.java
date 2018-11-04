@@ -9,10 +9,6 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Fragment homeFragment = new HomeFragment();
-    private Fragment dashboardsFragment = new DashboardsFragment();
-    private Fragment notificationsFragment = new NotificationsFragment();
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -22,22 +18,19 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment_holder, homeFragment)
-                            .addToBackStack(null)
+                            .replace(R.id.fragment_holder, new HomeFragment())
                             .commit();
                     return true;
                 case R.id.navigation_dashboards:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment_holder, dashboardsFragment)
-                            .addToBackStack(null)
+                            .replace(R.id.fragment_holder, new DashboardsFragment())
                             .commit();
                     return true;
                 case R.id.navigation_notifications:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment_holder, notificationsFragment)
-                            .addToBackStack(null)
+                            .replace(R.id.fragment_holder, new NotificationsFragment())
                             .commit();
                     return true;
             }
@@ -53,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_holder, homeFragment)
+                .replace(R.id.fragment_holder, new HomeFragment())
                 .commit();
     }
 }
