@@ -1,4 +1,4 @@
-package mprado.me.watertracker;
+package mprado.me.watertracker.bottomtabcontent.dashboards;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import mprado.me.watertracker.R;
 
 public class DashboardsFragment extends Fragment {
     private TabLayout mTabLayout;

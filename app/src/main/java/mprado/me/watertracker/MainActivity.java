@@ -3,9 +3,12 @@ package mprado.me.watertracker;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import mprado.me.watertracker.bottomtabcontent.dashboards.DashboardsFragment;
+import mprado.me.watertracker.bottomtabcontent.HomeFragment;
+import mprado.me.watertracker.bottomtabcontent.NotificationsFragment;
 
 public class MainActivity extends AppCompatActivity {
 

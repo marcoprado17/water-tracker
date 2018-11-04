@@ -1,10 +1,12 @@
-package mprado.me.watertracker;
+package mprado.me.watertracker.bottomtabcontent.dashboards;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import mprado.me.watertracker.R;
 
 public class TotalSensorsDashboardTabFragment extends TabFragment {
     @Override

@@ -1,4 +1,4 @@
-package mprado.me.watertracker;
+package mprado.me.watertracker.bottomtabcontent.dashboards;
 
 import android.support.v4.app.Fragment;
 
