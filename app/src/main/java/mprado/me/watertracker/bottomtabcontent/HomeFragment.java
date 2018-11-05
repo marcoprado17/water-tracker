@@ -87,6 +87,8 @@ public class HomeFragment extends Fragment {
     private static final String LAST_SENSORS_SYNC_KEY = "lastSensorsSyncKey";
     private static final String LAST_SENSORS_SAMPLE_SYNC_KEY = "lastSensorsDataSyncKey";
 
+    private Button mFakeSyncSensorsButton;
+    private Button mFakeSyncSensorsSamplesButton;
     private Button mSyncSensorsButton;
     private Button mSyncSensorsSamplesButton;
     private Button mCleanAllDataButton;
@@ -104,11 +106,27 @@ public class HomeFragment extends Fragment {
 
         mAsyncTasks = new LinkedList<>();
 
+        mFakeSyncSensorsButton = rootView.findViewById(R.id.fake_sync_sensors_button);
+        mFakeSyncSensorsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAsyncTasks.add(new FakeSyncSensorsAsyncTask().execute());
+            }
+        });
+
         mSyncSensorsButton = rootView.findViewById(R.id.sync_sensors_button);
         mSyncSensorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mAsyncTasks.add(new SyncSensorsAsyncTask().execute());
+            }
+        });
+
+        mFakeSyncSensorsSamplesButton = rootView.findViewById(R.id.fake_sync_sensors_samples_button);
+        mFakeSyncSensorsSamplesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAsyncTasks.add(new FakeSyncSensorsSampleAsyncTask().execute());
             }
         });
 
@@ -140,15 +158,14 @@ public class HomeFragment extends Fragment {
         return rootView;
     }
 
-    private class SyncSensorsAsyncTask extends AsyncTask<Void, Void, Void> {
+    private class FakeSyncSensorsAsyncTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
-            mSyncSensorsButton.setText(R.string.syncronizing);
+            mFakeSyncSensorsButton.setText(R.string.syncronizing);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            // TODO: Obter o dado real
             Sensor[] sensors = new Sensor[]{
                     Sensor.builder().id("a").build(),
                     Sensor.builder().id("b").build(),
@@ -173,6 +190,59 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    private class SyncSensorsAsyncTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            mSyncSensorsButton.setText(R.string.syncronizing);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            // TODO: Implementar
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(LAST_SENSORS_SYNC_KEY, Calendar.getInstance().getTime().toLocaleString());
+            editor.commit();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            reloadThisFragment();
+        }
+    }
+
+    private class FakeSyncSensorsSampleAsyncTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            mFakeSyncSensorsSamplesButton.setText(R.string.syncronizing);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            List<SensorSample> sensorSamples = FakeRawSensorSampleGenerator.getRawSensorSamples(MainActivity.db.sensorDao().getAll());
+            for(SensorSample sensorSample : sensorSamples) {
+                Log.d("MPRADO", String.format("%s, %s, %s", sensorSample.getSensorId(), sensorSample.getDate(), sensorSample.getFlowRate()));
+            }
+            MainActivity.db.rawSensorSampleDao().insertAll(sensorSamples);
+            SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(LAST_SENSORS_SAMPLE_SYNC_KEY, Calendar.getInstance().getTime().toLocaleString());
+            editor.commit();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            reloadThisFragment();
+        }
+    }
+
     private class SyncSensorsSampleAsyncTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {
@@ -181,17 +251,12 @@ public class HomeFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            // TODO: Obter o dado real
-            List<SensorSample> sensorSamples = FakeRawSensorSampleGenerator.getRawSensorSamples(MainActivity.db.sensorDao().getAll());
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-            for(SensorSample sensorSample : sensorSamples) {
-                Log.d("MPRADO", String.format("%s, %s, %s", sensorSample.getSensorId(), sensorSample.getDate(), sensorSample.getFlowRate()));
+            // TODO: Implementar
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            MainActivity.db.rawSensorSampleDao().insertAll(sensorSamples);
             SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString(LAST_SENSORS_SAMPLE_SYNC_KEY, Calendar.getInstance().getTime().toLocaleString());

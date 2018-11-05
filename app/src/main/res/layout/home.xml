@@ -67,6 +67,22 @@
             />
 
         <Button
+            android:id="@+id/fake_sync_sensors_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fake_sync_sensors"
+            />
+
+        <Button
+            android:id="@+id/fake_sync_sensors_samples_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/fake_sync_sensors_data"
+            />
+
+        <Button
             android:id="@+id/clean_all_data_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
