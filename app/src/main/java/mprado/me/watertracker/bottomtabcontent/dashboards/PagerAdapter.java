@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.MotionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         for(Sensor sensor : sensors){
             tabFragments.add(getNewSensorDashboardFragment(sensor.getId()));
         }
-        tabFragments.add(new TotalSensorsDashboardTabFragment());
+//        tabFragments.add(new TotalSensorsDashboardTabFragment());
     }
 
     private SensorDashboardTabFragment getNewSensorDashboardFragment(String sensorId) {

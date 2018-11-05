@@ -227,7 +227,7 @@ public class HomeFragment extends Fragment {
             for(SensorSample sensorSample : sensorSamples) {
                 Log.d("MPRADO", String.format("%s, %s, %s", sensorSample.getSensorId(), sensorSample.getDate(), sensorSample.getFlowRate()));
             }
-            MainActivity.db.rawSensorSampleDao().insertAll(sensorSamples);
+            MainActivity.db.sensorSampleDao().insertAll(sensorSamples);
             SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
             editor.putString(LAST_SENSORS_SAMPLE_SYNC_KEY, Calendar.getInstance().getTime().toLocaleString());

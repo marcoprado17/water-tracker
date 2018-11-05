@@ -21,7 +21,7 @@ import mprado.me.watertracker.data.sensor.Sensor;
 public class DashboardsFragment extends Fragment {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
-    private PagerAdapter mAdapter;
+    private PagerAdapter mPagesAdapter;
     private ContentLoadingProgressBar mContentLoadingProgressBar;
 
     private List<AsyncTask<?, ?, ?>> mAsyncTasks;
@@ -46,8 +46,8 @@ public class DashboardsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(List<Sensor> sensors) {
-            mAdapter = new PagerAdapter(getChildFragmentManager(), sensors);
-            mViewPager.setAdapter(mAdapter);
+            mPagesAdapter = new PagerAdapter(getChildFragmentManager(), sensors);
+            mViewPager.setAdapter(mPagesAdapter);
             mTabLayout.setupWithViewPager(mViewPager);
             mContentLoadingProgressBar.setVisibility(View.GONE);
         }

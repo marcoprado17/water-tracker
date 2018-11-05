@@ -15,6 +15,6 @@ import mprado.me.watertracker.data.sensortag.SensorTagDao;
 @Database(entities = {Sensor.class, SensorSample.class, SensorTag.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract SensorDao sensorDao();
-    public abstract SensorSampleDao rawSensorSampleDao();
+    public abstract SensorSampleDao sensorSampleDao();
     public abstract SensorTagDao sensorTagDao();
 }
