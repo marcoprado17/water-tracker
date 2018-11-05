@@ -27,8 +27,6 @@ import mprado.me.watertracker.data.rawsensorsample.SensorSample;
 import mprado.me.watertracker.data.sensor.Sensor;
 
 public class HomeFragment extends Fragment {
-    public static final int NORMALIZED_TIME_FRAME_IN_SECONDS = 300;
-
     public static class FakeRawSensorSampleGenerator {
         private static final Date INITIAL_DATE = new GregorianCalendar(2018, 6, 1).getTime();
         private static final Date FINAL_DATE = Calendar.getInstance().getTime();

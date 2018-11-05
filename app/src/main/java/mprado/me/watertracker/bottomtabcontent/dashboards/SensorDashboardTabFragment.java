@@ -10,7 +10,7 @@ import android.widget.TextView;
 import mprado.me.watertracker.R;
 
 public class SensorDashboardTabFragment extends TabFragment {
-    public static final String SENSOR_IDX_KEY = "sensorIdxKey";
+    public static final String SENSOR_ID_KEY = "sensorIdxKey";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -22,6 +22,6 @@ public class SensorDashboardTabFragment extends TabFragment {
 
     @Override
     public String getTitle() {
-        return String.format("Sensor %d", getArguments().getInt(SENSOR_IDX_KEY));
+        return String.format("Sensor %s", getArguments().getString(SENSOR_ID_KEY));
     }
 }
