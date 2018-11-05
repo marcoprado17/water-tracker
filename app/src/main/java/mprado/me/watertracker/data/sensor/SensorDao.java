@@ -12,6 +12,6 @@ public interface SensorDao {
     @Query("SELECT * FROM Sensor")
     List<Sensor> getAll();
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Sensor... sensors);
 }

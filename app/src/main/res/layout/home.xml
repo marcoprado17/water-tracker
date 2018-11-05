@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/last_sensors_sync"/>
                 <TextView
-                    android:id="@+id/last_sensors_data_sync_text_view"
+                    android:id="@+id/last_sensors_samples_sync_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/last_sensors_data_sync"/>
@@ -59,7 +59,7 @@
             />
 
         <Button
-            android:id="@+id/sync_sensors_data_button"
+            android:id="@+id/sync_sensors_samples_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -1,4 +1,7 @@
 package mprado.me.watertracker.data.sensortag;
 
-public class SensorTagDao {
+import android.arch.persistence.room.Dao;
+
+@Dao
+public abstract class SensorTagDao {
 }

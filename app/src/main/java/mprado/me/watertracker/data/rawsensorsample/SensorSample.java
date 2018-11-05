@@ -1,8 +1,9 @@
-package mprado.me.watertracker.data.sensor;
+package mprado.me.watertracker.data.rawsensorsample;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,14 +11,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(primaryKeys = {"date", "sensorId"})
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Sensor {
-    @PrimaryKey
+public class SensorSample {
     @NonNull
-    private String id;
+    private Date date;
+    @NonNull
+    private String sensorId;
+    private Float flowRate;
 }
